@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body class="bg-dark text-light">
+    <div class="container mt-5">
+        <h1>Welcome, {{ user.first_name }} {{ user.last_name }}!</h1>
+        <p>You have successfully logged in.</p>
+        <div>
+            <h2>User Information</h2>
+            <table class="table table-dark table-striped">
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-envelope"></i> <strong>Email:</strong></td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-calendar"></i> <strong>Date of Birth:</strong></td>
+                        <td>{{ user.birthday.strftime('%m-%d-%Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-code"></i> <strong>Favorite Programming Language:</strong></td>
+                        <td>{{ user.programming_language }}</td>
+                    <tr>
+                        <td><i class="fas fa-heart"></i> <strong>Interests:</strong></td>
+                        <td>
+                            <ul>
+                                {% for interest in user.interests %}
+                                <li>{{ interest }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/logout" class="btn btn-primary">Logout</a>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
